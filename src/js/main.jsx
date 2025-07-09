@@ -10,9 +10,18 @@ import '../styles/index.css'
 
 // components
 import Home from './components/Home';
+import Digit from './components/Digit';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+
+
+
+let seconds = 0;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+setInterval(() => {
+  let digits = seconds.toString();
+  while (digits.length < 6) digits = "0" + digits;
+  root.render(<Digit digits={digits} />);
+  seconds++;
+}, 1000);
+
